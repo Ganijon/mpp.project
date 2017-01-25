@@ -49,3 +49,5 @@ Temporary Items
 /business/library.domain/build/
 /business/library.domain/dist/
 /ui/library.ui/nbproject/private/
+/ui/library.ui/build/
+/ui/library.ui/dist/
