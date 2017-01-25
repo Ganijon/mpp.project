@@ -1,4 +1,4 @@
-package library.domain;
+
 
 public abstract class Person {
 

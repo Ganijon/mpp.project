@@ -1,4 +1,4 @@
-package library.domain;
+
 
 public class Member extends Person {
     

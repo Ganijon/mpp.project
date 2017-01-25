@@ -1,10 +1,10 @@
-package library.ui.addcopy;
+
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
-public class AddCopyController implements Initializable {
+public class AddMemberController implements Initializable {
 
     /**
      * Initializes the controller class.

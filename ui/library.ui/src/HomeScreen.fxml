@@ -6,16 +6,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.ui.home.HomeController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeController">
    <children>
-      <Pane layoutX="24.0" layoutY="92.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;">
+      <Pane fx:id="pAdminPane" layoutX="24.0" layoutY="92.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;">
          <children>
             <Button layoutX="56.0" layoutY="14.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="88.0" text="Add Member" />
             <Button layoutX="56.0" layoutY="119.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="88.0" text="Add Copy" />
             <Button layoutX="56.0" layoutY="66.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="88.0" text="Add Book" />
          </children>
       </Pane>
-      <Pane layoutX="363.0" layoutY="92.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: blue;">
+      <Pane fx:id="pLibPane" layoutX="363.0" layoutY="92.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: blue;">
          <children>
             <Button layoutX="54.0" layoutY="14.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="105.0" text="Checkout Book" />
             <Button layoutX="54.0" layoutY="66.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="105.0" text="Print Checkout " />

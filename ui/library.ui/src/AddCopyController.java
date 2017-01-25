@@ -1,10 +1,10 @@
-package library.ui.printcheckout;
+
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
-public class PrintCheckoutController implements Initializable {
+public class AddCopyController implements Initializable {
 
     /**
      * Initializes the controller class.
