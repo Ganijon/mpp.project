@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package library.ui;
+package library.ui.addmember;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author 985484
  */
-public class LandingPageController implements Initializable {
+public class AddMemberController implements Initializable {
 
     /**
      * Initializes the controller class.
