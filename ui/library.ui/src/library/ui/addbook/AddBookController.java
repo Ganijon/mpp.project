@@ -4,11 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
-/**
- * FXML Controller class
- *
- * @author 985565
- */
 public class AddBookController implements Initializable {
 
     /**
