@@ -45,3 +45,6 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+/business/library.domain/nbproject/private/
+/business/library.domain/build/
+/business/library.domain/dist/
