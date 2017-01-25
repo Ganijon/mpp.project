@@ -1,4 +1,4 @@
-package library.ui.addbook;
+package library.ui.addcopy;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -7,9 +7,8 @@ import javafx.fxml.Initializable;
 /**
  * FXML Controller class
  *
- * @author 985565
  */
-public class AddBookScreenController implements Initializable {
+public class AddCopyController implements Initializable {
 
     /**
      * Initializes the controller class.

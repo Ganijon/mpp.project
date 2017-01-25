@@ -8,10 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="395.0" prefWidth="411.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="library.ui.AddBookScreenController">
-    <stylesheets>
-        <URL value="@addbookscreen.css" />
-    </stylesheets>
+<AnchorPane id="AnchorPane" prefHeight="395.0" prefWidth="411.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.ui.addbook.AddBookController">
    <children>
       <Label layoutX="27.0" layoutY="21.0" text="Add new book/Edit existing book">
          <font>
@@ -73,8 +70,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label prefHeight="17.0" prefWidth="120.0" text="N copies" />
                   <Button alignment="CENTER_RIGHT" mnemonicParsing="false" text="Add..." GridPane.columnIndex="1" />
+                  <TextField />
                </children>
             </GridPane>
          </children>
