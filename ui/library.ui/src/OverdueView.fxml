@@ -20,17 +20,18 @@
          </font>
       </Label>
       <Label layoutX="24.0" layoutY="80.0" text="Enter ISBN" />
-      <TextField layoutX="96.0" layoutY="76.0" prefHeight="25.0" prefWidth="199.0" />
-      <Button layoutX="302.0" layoutY="76.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="Check" />
-      <TableView layoutX="24.0" layoutY="141.0" prefHeight="184.0" prefWidth="356.0">
+      <TextField fx:id="tfISBN" layoutX="96.0" layoutY="76.0" prefHeight="25.0" prefWidth="199.0" />
+      <Button layoutX="302.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleFindOverdueCopies" prefHeight="25.0" prefWidth="76.0" text="Check" />
+      <TableView fx:id="tvOverdueCopies" layoutX="24.0" layoutY="141.0" prefHeight="184.0" prefWidth="356.0">
         <columns>
-          <TableColumn prefWidth="69.0" text="Copy ID" />
-          <TableColumn text="Avaiability" />
-            <TableColumn prefWidth="98.0" text="Due Date" />
+          <TableColumn fx:id="tcBookCopyId" prefWidth="94.0" text="Book Copy ID" />
+          <TableColumn fx:id="tcBookCopyIsAvailable" prefWidth="88.0" text="Available" />
+            <TableColumn fx:id="tcBookCopyDueDate" prefWidth="88.0" text="Due Date" />
+            <TableColumn fx:id="tcMemberId" prefWidth="84.0" text="Member ID" />
         </columns>
       </TableView>
       <Label layoutX="53.0" layoutY="110.0" text="Title" />
-      <TextField layoutX="96.0" layoutY="106.0" prefHeight="25.0" prefWidth="199.0" />
+      <TextField fx:id="tfTitle" layoutX="96.0" layoutY="106.0" prefHeight="25.0" prefWidth="199.0" />
       <Button layoutX="132.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleCancelAction" prefHeight="25.0" prefWidth="114.0" text="Cancel" />
       <Button layoutX="261.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleSubmitAction" prefHeight="25.0" prefWidth="114.0" text="Submit" />
    </children>
