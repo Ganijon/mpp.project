@@ -35,16 +35,9 @@ public class LoginController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeScreen.fxml"));
                 Parent root = (Parent) loader.load();
-
-                System.out.println("loader.load() is done!");
                 HomeController controller = loader.getController();
-
-                System.out.println("loader.getController() is done!");
                 controller.setStage(stage);
-                                System.out.println("loader.setStage() is done!");
                 controller.setUserAccount(user);
-                System.out.println("loader.setUserAccount() is done!");
-
 
                 Scene scene = new Scene(root);
                 stage.setScene(scene);

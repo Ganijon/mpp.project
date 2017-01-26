@@ -35,11 +35,11 @@
             <Label text="Max checkout days" GridPane.rowIndex="3" />
             <Label text="Number of copies" GridPane.rowIndex="4" />
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField GridPane.columnIndex="1" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="69.0" text="Find" GridPane.columnIndex="2" />
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label prefHeight="17.0" prefWidth="143.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <Button layoutX="132.0" layoutY="347.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="Cancel" />

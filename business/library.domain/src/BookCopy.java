@@ -2,6 +2,16 @@
 
 public class BookCopy {
 
-    private String BookCopyID;
+    private int BookCopyID;
     private boolean isAvailable;
+    private static int instance=0;
+
+    public BookCopy() {
+        instance++;
+        this.BookCopyID = instance;
+        this.isAvailable = true;
+    }
+    
+    
+    
 }

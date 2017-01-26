@@ -10,11 +10,14 @@
 
 <AnchorPane id="AnchorPane" prefHeight="395.0" prefWidth="411.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddBookController">
    <children>
-      <Label layoutX="27.0" layoutY="21.0" text="Add new book/Edit existing book">
+      <Label layoutX="154.0" layoutY="14.0" text="Add new book">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
+      <fx:define>
+          <ToggleGroup fx:id="tg"/>
+      </fx:define>
       <GridPane layoutX="46.0" layoutY="90.0" prefHeight="214.0" prefWidth="308.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="110.0" />
@@ -33,7 +36,7 @@
             <Label text="Authors" GridPane.rowIndex="2" />
             <Label text="Max checkout days" GridPane.rowIndex="3" />
             <Label text="Number of copies" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="tfTitle" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="169.0" minWidth="10.0" prefWidth="140.0" />
@@ -44,10 +47,10 @@
               </rowConstraints>
                <children>
                   <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="48.0" text="Add..." GridPane.columnIndex="1" />
-                  <TextField />
+                  <Label text="List of authors" />
                </children>
             </GridPane>
-            <TextField GridPane.columnIndex="1" />
+            <TextField fx:id="tfISBN" GridPane.columnIndex="1" />
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="80.0" />
@@ -57,26 +60,14 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="68.0" text="7 days" />
-                  <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="81.0" text="21 days" GridPane.columnIndex="1" />
+                  <RadioButton toggleGroup ="$tg" mnemonicParsing="false" prefHeight="17.0" prefWidth="68.0" text="7 days" />
+                  <RadioButton toggleGroup ="$tg" mnemonicParsing="false" prefHeight="17.0" prefWidth="81.0" text="21 days" GridPane.columnIndex="1" />
                </children>
             </GridPane>
-            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="4">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="137.0" />
-                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="55.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Button alignment="CENTER_RIGHT" mnemonicParsing="false" text="Add..." GridPane.columnIndex="1" />
-                  <TextField />
-               </children>
-            </GridPane>
+            <Label text="1" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <Button layoutX="132.0" layoutY="347.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="Cancel" />
-      <Button layoutX="261.0" layoutY="347.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="Submit" />
+      <Button layoutX="132.0"  onAction="#handlecancel"  layoutY="347.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="Cancel" />
+      <Button layoutX="261.0" onAction="#handlesubmit"layoutY="347.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="Submit" />
    </children>
 </AnchorPane>
