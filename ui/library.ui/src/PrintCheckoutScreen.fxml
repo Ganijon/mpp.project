@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="379.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PrintCheckoutController">
    <children>
-      <Label layoutX="118.0" layoutY="29.0" prefHeight="34.0" prefWidth="228.0" text="Print Checkout Record">
+      <Label layoutX="92.0" layoutY="14.0" prefHeight="34.0" prefWidth="228.0" text="Print Checkout Record">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
