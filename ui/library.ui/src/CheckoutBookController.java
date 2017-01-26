@@ -48,48 +48,44 @@ public class CheckoutBookController {
 
         if (model.getNoOfAvailableCopies() == 0) {
             Views.showErrorAlert("No copies available");
-        } else {
-
-            int memberId = Integer.parseInt(tfMemberId.getText());
-            Member foundMember = new MemberDao().find(memberId);
-
-            if (foundMember == null) {
-                Views.showErrorAlert("Member not found");
-            } else {
-                boolean updated = false;
-
-                CheckoutRecordDao checkoutDao = new CheckoutRecordDao();
-
-                //1. find checkout record by memberId
-                CheckoutRecord record = checkoutDao.find(memberId);
-
-                //2. add one checkout entry with checkout date, due date(today+issueLength),
-                LocalDate dueDate = LocalDate.now().plusDays(model.getIssueLength());
-                CheckoutEntry newEntry = new CheckoutEntry(LocalDate.now(), dueDate, memberId);
-
-                if (record == null) {
-                    record = new CheckoutRecord(memberId);
-                    record.getCheckouts().add(newEntry);
-                    updated = checkoutDao.add(record);
-
-                } else {
-                    record.getCheckouts().add(newEntry);
-                    updated = checkoutDao.update(record);
-                }
-
-                //3. decrementNoOfAvailableCopies
-                model.decrementNoOfAvailableCopies();
-                updated = updated && (new BookDao().update(model));
-
-                if (!updated) {
-                    Views.showErrorAlert("Error while checkout book");
-                } else {
-                    Views.showSuccessAlert("Checkout complete");
-                    Views.showHome(stage, this);
-                }
-            }
+            return;
         }
 
+        int memberId = Integer.parseInt(tfMemberId.getText());
+        Member foundMember = new MemberDao().find(memberId);
+
+        if (foundMember == null) {
+            Views.showErrorAlert("Member not found");
+            return;
+        }
+
+        CheckoutRecordDao checkoutDao = new CheckoutRecordDao();
+        CheckoutRecord record = checkoutDao.find(memberId);
+
+        LocalDate dueDate = LocalDate.now().plusDays(model.getIssueLength());
+        int copyId = model.getAvailableCopy().getBookCopyId();
+        CheckoutEntry entry = new CheckoutEntry(LocalDate.now(), dueDate, copyId, memberId);
+
+        boolean updated;
+        if (record == null) {
+            record = new CheckoutRecord(memberId);
+            record.getCheckouts().add(entry);
+            updated = checkoutDao.add(record);
+
+        } else {
+            record.getCheckouts().add(entry);
+            updated = checkoutDao.update(record);
+        }
+
+        model.decrementNoOfAvailableCopies();
+        updated = new BookDao().update(model) && updated;
+
+        if (!updated) {
+            Views.showErrorAlert("Error while checkout book");
+        } else {
+            Views.showSuccessAlert("Checkout complete");
+            Views.showHome(stage, this);
+        }
     }
 
     @FXML

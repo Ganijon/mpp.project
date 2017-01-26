@@ -60,6 +60,14 @@ public class Book implements Serializable {
         return count;
     }
 
+    public BookCopy getAvailableCopy() {
+        int index = getNoOfCopies() - getNoOfAvailableCopies();
+        if (index > 0) 
+            return copies.get(index);
+        
+        return null;
+    }
+
     public int decrementNoOfAvailableCopies() {
         int count = getNoOfAvailableCopies();
         if (count > 0) {
