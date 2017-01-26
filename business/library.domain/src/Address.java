@@ -1,25 +1,26 @@
 
+import java.io.Serializable;
 
-public class Address {
+public class Address implements Serializable {
 
-    private String strret;
+    private String street;
     private String city;
-    private String State;
+    private String state;
     private String zip;
 
     public Address(String strret, String city, String State, String zip) {
-        this.strret = strret;
+        this.street = strret;
         this.city = city;
-        this.State = State;
+        this.state = State;
         this.zip = zip;
     }
 
     public String getStrret() {
-        return strret;
+        return street;
     }
 
     public void setStrret(String strret) {
-        this.strret = strret;
+        this.street = strret;
     }
 
     public String getCity() {
@@ -31,11 +32,11 @@ public class Address {
     }
 
     public String getState() {
-        return State;
+        return state;
     }
 
     public void setState(String State) {
-        this.State = State;
+        this.state = State;
     }
 
     public String getZip() {
@@ -45,7 +46,19 @@ public class Address {
     public void setZip(String zip) {
         this.zip = zip;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(" Street:");
+        sb.append(street);
+        sb.append(" City:");
+        sb.append(city);
+        sb.append(" State:");
+        sb.append(state);
+        sb.append(" Zip:");
+        sb.append(zip);
+        return sb.toString();
+    }
+
 }

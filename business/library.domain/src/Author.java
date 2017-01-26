@@ -1,14 +1,16 @@
 
+import java.io.Serializable;
 
-public class Author extends Person {
+
+public class Author extends Person implements Serializable {
 
     private boolean credentials;
-    private String ShortBio;
+    private String shortBio;
 
-    public Author(boolean credentials, String ShortBio, String FirstName, String LastName, String PhoneNumber, Address address) {
-        super(FirstName, LastName, PhoneNumber, address);
+    public Author(String firstName, String lastName, String phoneNumber, Address address, boolean credentials, String ShortBio) {
+        super(firstName, lastName, phoneNumber, address);
         this.credentials = credentials;
-        this.ShortBio = ShortBio;
+        this.shortBio = ShortBio;
     }
 
     public boolean isCredentials() {
@@ -20,12 +22,11 @@ public class Author extends Person {
     }
 
     public String getShortBio() {
-        return ShortBio;
+        return shortBio;
     }
 
     public void setShortBio(String ShortBio) {
-        this.ShortBio = ShortBio;
+        this.shortBio = ShortBio;
     }
-    
-    
+
 }

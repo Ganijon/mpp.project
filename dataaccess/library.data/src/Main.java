@@ -7,24 +7,23 @@ public class Main {
 
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
+        List<Book> list = new ArrayList<>();
+        Book b = new Book("Fifty Shades of Grey", "ABCD-1234-555", 7, new BookCopy());
+        list.add(b);
 
-        List<Person> list = new ArrayList<>();
-        //list.add(new Person("Alice", "111"));
-        list.add(new Person("Bob", "222"));
-        list.add(new Person("Cathy", "333"));
-        list.add(new Person("Dave", "444"));
-        list.add(new Person("Elen", "555"));
+        BookDao dao = new BookDao();
 
-        PersonDao personDao = new PersonDao();
-
-        boolean success = personDao.write(list);
+        boolean success = dao.write(list);
 
         System.out.println(success ? "success" : "error");
 
-        List<Person> readList = personDao.read();
+        List<Book> readList = dao.read();
 
         System.out.println(readList);
 
+        dao.add(b);
+        
+        System.out.println(dao.read());
         /*
         
         DataAccess da = DataAccessFactory.getDataAccess();

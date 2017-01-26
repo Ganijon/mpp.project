@@ -1,22 +1,27 @@
 
+import java.io.Serializable;
 
-public class Member extends Person {
+public class Member extends Person implements Serializable {
     
-    private int MemberID;
+    private int memberID;
     static private int instance=0;
 
     public Member(String FirstName, String LastName, String PhoneNumber, Address address) {
         super(FirstName, LastName, PhoneNumber, address);
-        this.MemberID = MemberID;
+        this.memberID = memberID;
     }
-
-    
 
     public int getMemberID() {
-        return MemberID;
+        return memberID;
     }
-
-    
-    
+  
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(" Member ID:");
+        sb.append(memberID);
+        sb.append(super.toString());
+        return sb.toString();
+    }
     
 }

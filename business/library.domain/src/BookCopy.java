@@ -1,17 +1,26 @@
 
+import java.io.Serializable;
 
-public class BookCopy {
+public class BookCopy implements Serializable {
 
-    private int BookCopyID;
+    private int bookCopyId;
     private boolean isAvailable;
-    private static int instance=0;
 
     public BookCopy() {
-        instance++;
-        this.BookCopyID = instance;
+        this.bookCopyId = 0;
         this.isAvailable = true;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(" BookCopyId:");
+        sb.append(bookCopyId);
+
+        sb.append(" Available:");
+        sb.append(isAvailable ? "yes" : "no");
+
+        return sb.toString();
+    }
+
 }

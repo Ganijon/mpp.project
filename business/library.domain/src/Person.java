@@ -1,41 +1,42 @@
 
+import java.io.Serializable;
 
-public abstract class Person {
+public abstract class Person implements Serializable {
 
-    private String FirstName;
-    private String LastName;
-    private String PhoneNumber;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
     private Address address;
 
     public Person(String FirstName, String LastName, String PhoneNumber, Address address) {
-        this.FirstName = FirstName;
-        this.LastName = LastName;
-        this.PhoneNumber = PhoneNumber;
+        this.firstName = FirstName;
+        this.lastName = LastName;
+        this.phoneNumber = PhoneNumber;
         this.address = address;
     }
 
     public String getFirstName() {
-        return FirstName;
+        return firstName;
     }
 
     public void setFirstName(String FirstName) {
-        this.FirstName = FirstName;
+        this.firstName = FirstName;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public void setLastName(String LastName) {
-        this.LastName = LastName;
+        this.lastName = LastName;
     }
 
     public String getPhoneNumber() {
-        return PhoneNumber;
+        return phoneNumber;
     }
 
     public void setPhoneNumber(String PhoneNumber) {
-        this.PhoneNumber = PhoneNumber;
+        this.phoneNumber = PhoneNumber;
     }
 
     public Address getAddress() {
@@ -45,7 +46,20 @@ public abstract class Person {
     public void setAddress(Address address) {
         this.address = address;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(" First name:");
+        sb.append(firstName);
+        sb.append(" Last name:");
+        sb.append(lastName);
+        sb.append(" Phone number:");
+        sb.append(phoneNumber);
+        sb.append(" Address: {");
+        sb.append(address.toString());
+        sb.append("}");
+        return sb.toString();
+    }
 
 }
