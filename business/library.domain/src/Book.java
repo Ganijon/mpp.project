@@ -46,6 +46,14 @@ public class Book implements Serializable {
         this.issueLength = issueLength;
     }
 
+    public int getNoOfCopies() {
+        return copies.size();
+    }
+    
+    public String getAuthors() {
+        return authors.get(0).getFirstName();
+    }
+      
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -70,5 +78,4 @@ public class Book implements Serializable {
     public void addAuthor(Author a) {
         authors.add(a);
     }
-
 }

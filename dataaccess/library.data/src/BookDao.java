@@ -6,7 +6,7 @@ public class BookDao implements Dao<Book> {
 
     public final static String FILENAME = "books.ser";
 
-    Serializer<List<Book>> serializer = new Serializer<>();
+    private Serializer<List<Book>> serializer = new Serializer<>();
 
     @Override
     public List<Book> read() {
@@ -15,6 +15,7 @@ public class BookDao implements Dao<Book> {
 
     @Override
     public boolean write(List<Book> list) {
+        System.out.println("SAVING DATA: " + list.toString());
         return serializer.serialize(list, FILENAME);
     }
 
@@ -29,5 +30,35 @@ public class BookDao implements Dao<Book> {
         return write(list);
     }
 
-}
+    //@Override
+    public Book find(String ISBN) {
+        List<Book> list = read();
+        for (Book book : list) {
+            if (book.getISBN().equals(ISBN)) {
+                return book;
+            }
+        }
+        return null;
+    }
 
+    public boolean update(Book data) {
+        List<Book> list = read();
+        for (Book book : list) {
+            if (book.getISBN().equals(data.getISBN())) {
+                System.out.println("UPDATING DATA:" + book.toString());
+                book.setTitle(data.getTitle());
+                // todo: update other attributes
+                int delta = data.getNoOfCopies() - book.getNoOfCopies();
+                if (delta > 0) {
+                    for (int i = 0; i < delta; i++) {
+                        book.addBookCopy(new BookCopy());
+                        System.out.println("UPDATING DATA:" + book.toString());
+                    }
+                }
+
+                return write(list);
+            }
+        }
+        return false;
+    }
+}
