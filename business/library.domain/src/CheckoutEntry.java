@@ -28,11 +28,11 @@ public class CheckoutEntry implements Serializable {
      @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(" Book Copy ID:");
+        sb.append(" BookCopyID:");
         sb.append(bookCopyId);
-        sb.append(" Checkout Date:");
+        sb.append(" CheckoutDate:");
         sb.append(checkoutDate);
-        sb.append(" Due Date:");
+        sb.append(" DueDate:");
         sb.append(dueDate);
         return sb.toString();
     }

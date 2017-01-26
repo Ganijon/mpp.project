@@ -10,7 +10,12 @@ public class MemberDao implements Dao<Member> {
 
     @Override
     public List<Member> read() {
-        return serializer.deSerialize(FILENAME);
+        List<Member> list = serializer.deSerialize(FILENAME);
+        if (list == null) {
+            write(new ArrayList<>());
+            list = read();
+        }
+        return list;
     }
 
     @Override
@@ -20,20 +25,21 @@ public class MemberDao implements Dao<Member> {
 
     @Override
     public boolean add(Member newMember) {
-        List<Member> list;
-        
-        // check data file
-        list = read();
-        if (list == null) {
-            // create empty data file
-            write(new ArrayList<>());
-            list = read();
-        }
-        
+        List<Member> list = read();
         newMember.setMemberID(list.size() + 1);
         list.add(newMember);
-        
         return write(list);
+    }
+
+    //@Override
+    public Member find(int memberId) {
+        List<Member> list = read();
+        for (Member member : list) {
+            if (member.getMemberID() == memberId) {
+                return member;
+            }
+        }
+        return null;
     }
 
 }

@@ -22,9 +22,9 @@ public class FineEntry implements Serializable {
  @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(" Paid Date:");
+        sb.append(" PaidDate:");
         sb.append(paidDate);
-        sb.append(" Late Return:");
+        sb.append(" LateReturn:");
         sb.append(lateReturn);
         return sb.toString();
     }

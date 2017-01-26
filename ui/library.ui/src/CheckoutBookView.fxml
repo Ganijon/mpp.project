@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="CheckoutBookController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CheckoutBookController">
    <children>
-      <Button layoutX="261.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleSubmitAction" prefHeight="25.0" prefWidth="114.0" text="Submit" />
+      <Button layoutX="261.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleSubmitAction" prefHeight="25.0" prefWidth="114.0" text="Checkout" />
       <Button layoutX="132.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleCancelAction" prefHeight="25.0" prefWidth="114.0" text="Cancel" />
+      <TextField fx:id="tfMemberId" layoutX="251.0" layoutY="260.0" prefHeight="25.0" prefWidth="124.0" />
+      <Label layoutX="144.0" layoutY="264.0" text="Enter Member ID" />
+      <Button layoutX="263.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleFindBookAction" prefHeight="25.0" prefWidth="114.0" text="Check Availability" />
+      <TextField fx:id="tfISBN" layoutX="95.0" layoutY="76.0" prefHeight="25.0" prefWidth="163.0" />
+      <Label layoutX="23.0" layoutY="80.0" text="Enter ISBN" />
+      <Label alignment="CENTER" layoutX="78.0" layoutY="20.0" prefHeight="35.0" prefWidth="244.0" text="Checkout Book">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="170.0" prefHeight="17.0" prefWidth="47.0" text="Authors" />
+      <TextField fx:id="tfAuthors" editable="false" layoutX="94.0" layoutY="168.0" prefHeight="25.0" prefWidth="284.0" />
+      <TextField fx:id="tfNoOfCopies" alignment="CENTER" editable="false" layoutX="251.0" layoutY="212.0" prefHeight="25.0" prefWidth="124.0" />
+      <Label layoutX="96.0" layoutY="216.0" text="Number of available copies" />
+      <TextField fx:id="tfTitle" editable="false" layoutX="94.0" layoutY="128.0" prefHeight="25.0" prefWidth="284.0" />
+      <Label layoutX="34.0" layoutY="130.0" prefHeight="17.0" prefWidth="40.0" text="Title" />
    </children>
 </AnchorPane>

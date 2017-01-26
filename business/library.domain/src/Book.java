@@ -49,11 +49,34 @@ public class Book implements Serializable {
     public int getNoOfCopies() {
         return copies.size();
     }
-    
+
+    public int getNoOfAvailableCopies() {
+        int count = 0;
+        for (BookCopy bc : copies) {
+            if (bc.isAvailable()) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int decrementNoOfAvailableCopies() {
+        int count = getNoOfAvailableCopies();
+        if (count > 0) {
+            for (BookCopy bc : copies) {
+                if (bc.isAvailable()) {
+                    bc.setAvailable(false);
+                    return --count;
+                }
+            }
+        }
+        return count;
+    }
+
     public String getAuthors() {
         return authors.get(0).getFirstName();
     }
-      
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

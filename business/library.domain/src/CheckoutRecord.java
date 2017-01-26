@@ -1,6 +1,6 @@
 
 import java.io.Serializable;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CheckoutRecord implements Serializable {
@@ -9,10 +9,10 @@ public class CheckoutRecord implements Serializable {
     private List<CheckoutEntry> checkouts;
     private List<FineEntry> fines;
 
-    public CheckoutRecord(int memberId, CheckoutEntry[] checkouts, FineEntry[] fines) {
+    public CheckoutRecord(int memberId) {
         this.memberId = memberId;
-        this.checkouts = Arrays.asList(checkouts);
-        this.fines = Arrays.asList(fines);
+        this.checkouts = new ArrayList<>();
+        this.fines = new ArrayList<>();
     }
 
     public int getMemberId() {
@@ -30,7 +30,7 @@ public class CheckoutRecord implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(" Member ID:");
+        sb.append(" MemberID:");
         sb.append(memberId);
         sb.append(" Checkouts:");
         sb.append(checkouts.toString());
@@ -38,4 +38,9 @@ public class CheckoutRecord implements Serializable {
         sb.append(fines.toString());
         return sb.toString();
     }
+
+    boolean hasRecords() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

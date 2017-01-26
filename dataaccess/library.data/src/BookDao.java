@@ -10,22 +10,22 @@ public class BookDao implements Dao<Book> {
 
     @Override
     public List<Book> read() {
-        return serializer.deSerialize(FILENAME);
+        List<Book> list = serializer.deSerialize(FILENAME);
+        if (list == null) {
+            write(new ArrayList<>());
+            list = read();
+        }
+        return list;
     }
 
     @Override
     public boolean write(List<Book> list) {
-        System.out.println("SAVING DATA: " + list.toString());
         return serializer.serialize(list, FILENAME);
     }
 
     @Override
     public boolean add(Book newBook) {
         List<Book> list = read();
-        if (list == null) {
-            write(new ArrayList<>());
-            list = read();
-        }
         list.add(newBook);
         return write(list);
     }
@@ -45,17 +45,20 @@ public class BookDao implements Dao<Book> {
         List<Book> list = read();
         for (Book book : list) {
             if (book.getISBN().equals(data.getISBN())) {
-                System.out.println("UPDATING DATA:" + book.toString());
+                
                 book.setTitle(data.getTitle());
-                // todo: update other attributes
+                
                 int delta = data.getNoOfCopies() - book.getNoOfCopies();
                 if (delta > 0) {
                     for (int i = 0; i < delta; i++) {
                         book.addBookCopy(new BookCopy());
-                        System.out.println("UPDATING DATA:" + book.toString());
                     }
                 }
 
+                delta = book.getNoOfAvailableCopies() - data.getNoOfAvailableCopies();
+                if (delta > 0) {
+                    book.decrementNoOfAvailableCopies();
+                }
                 return write(list);
             }
         }

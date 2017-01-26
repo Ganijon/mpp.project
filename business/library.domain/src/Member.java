@@ -20,7 +20,7 @@ public class Member extends Person implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(" Member ID:");
+        sb.append(" MemberID:");
         sb.append(memberId);
         sb.append(super.toString());
         return sb.toString();

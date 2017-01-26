@@ -17,7 +17,7 @@ public class Main {
             new FineEntry(LocalDate.now(), LocalDate.now()),
             new FineEntry(LocalDate.now(), LocalDate.now())};
 
-        CheckoutRecord cr = new CheckoutRecord(0, checkouts, fines);
+        CheckoutRecord cr = new CheckoutRecord(0);
         list.add(cr);
 
         CheckoutRecordDao dao = new CheckoutRecordDao();
