@@ -31,6 +31,8 @@ public class OverdueController {
 
         } else {
             tfTitle.setText(model.getTitle());
+            
+            
         }
     }
 
