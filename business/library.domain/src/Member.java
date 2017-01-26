@@ -3,25 +3,26 @@ import java.io.Serializable;
 
 public class Member extends Person implements Serializable {
     
-    private int memberID;
-    static private int instance=0;
+    private int memberId;
 
     public Member(String FirstName, String LastName, String PhoneNumber, Address address) {
         super(FirstName, LastName, PhoneNumber, address);
-        this.memberID = memberID;
     }
 
     public int getMemberID() {
-        return memberID;
+        return memberId;
     }
-  
+    
+    void setMemberID(int id) {
+        memberId = id;
+    }
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(" Member ID:");
-        sb.append(memberID);
+        sb.append(memberId);
         sb.append(super.toString());
         return sb.toString();
     }
-    
 }

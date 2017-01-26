@@ -1,17 +1,25 @@
 
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.stage.Stage;
 
-public class OverdueController implements Initializable {
+public class OverdueController  {
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+     @FXML
+    private void handleSubmitAction(ActionEvent e) {
+        // todo: checkout logic
+        Views.showHome(stage, this);
+    }
+
+    @FXML
+    private void handleCancelAction(ActionEvent e) {
+        Views.showHome(stage, this);
+    }
     
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    private Stage stage;
 }

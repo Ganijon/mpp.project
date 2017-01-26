@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookDao implements Dao<Book> {
@@ -19,9 +20,13 @@ public class BookDao implements Dao<Book> {
 
     @Override
     public boolean add(Book newBook) {
-        List<Book> allBooks = read();
-        allBooks.add(newBook);
-        return write(allBooks);
+        List<Book> list = read();
+        if (list == null) {
+            write(new ArrayList<>());
+            list = read();
+        }
+        list.add(newBook);
+        return write(list);
     }
 
 }

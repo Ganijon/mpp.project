@@ -1,9 +1,31 @@
 
-
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class FineEntry {
+public class FineEntry implements Serializable {
 
-    private LocalDate paidDate;
-    private LocalDate LateReturn;
+    private final LocalDate paidDate;
+    private final LocalDate lateReturn;
+
+    public FineEntry(LocalDate paidDate, LocalDate lateReturn) {
+        this.paidDate = paidDate;
+        this.lateReturn = lateReturn;
+    }
+
+    public LocalDate getPaidDate() {
+        return paidDate;
+    }
+
+    public LocalDate getLateReturn() {
+        return lateReturn;
+    }
+ @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(" Paid Date:");
+        sb.append(paidDate);
+        sb.append(" Late Return:");
+        sb.append(lateReturn);
+        return sb.toString();
+    }
 }

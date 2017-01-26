@@ -1,55 +1,39 @@
 
-import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
-    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
-        List<Book> list = new ArrayList<>();
-        Book b = new Book("Fifty Shades of Grey", "ABCD-1234-555", 7, new BookCopy());
-        list.add(b);
+        List<CheckoutRecord> list = new ArrayList<>();
+        CheckoutEntry[] checkouts = {
+            new CheckoutEntry(LocalDate.now(), LocalDate.now(), 0),
+            new CheckoutEntry(LocalDate.now(), LocalDate.now(), 1),
+            new CheckoutEntry(LocalDate.now(), LocalDate.now(), 2)};
 
-        BookDao dao = new BookDao();
+        FineEntry[] fines = {
+            new FineEntry(LocalDate.now(), LocalDate.now()),
+            new FineEntry(LocalDate.now(), LocalDate.now()),
+            new FineEntry(LocalDate.now(), LocalDate.now())};
 
+        CheckoutRecord cr = new CheckoutRecord(0, checkouts, fines);
+        list.add(cr);
+
+        CheckoutRecordDao dao = new CheckoutRecordDao();
+
+        dao.add(cr);
+        
         boolean success = dao.write(list);
 
         System.out.println(success ? "success" : "error");
 
-        List<Book> readList = dao.read();
+        List<CheckoutRecord> readList = dao.read();
 
         System.out.println(readList);
 
-        dao.add(b);
-        
+        dao.add(cr);
+
         System.out.println(dao.read());
-        /*
-        
-        DataAccess da = DataAccessFactory.getDataAccess();
-        
-
-        Dao dao = new PersonDao(list);
-
-        try {
-            da.write(dao);
-            
-        } catch (IOException e) {
-            //handle
-        }
-         
-        Dao dao2 = new PersonDao();
-        try {
-            da.read(dao2);
-            List<Person> persons = (List<Person>) dao2.getResults();
-
-            for (Person p : persons) {
-                System.out.println(p);
-            }
-            //display addresses
-        } catch (IOException e) {
-            //handle
-        }
-         */
     }
 }

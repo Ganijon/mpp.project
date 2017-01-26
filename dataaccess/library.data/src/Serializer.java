@@ -7,14 +7,15 @@ import java.io.ObjectOutputStream;
 
 public class Serializer<T> {
 
+    private static final String PATH = "data/";
+
     public boolean serialize(T object, String fileName) {
 
-        try (FileOutputStream fileStream = new FileOutputStream(fileName);
+        try (FileOutputStream fileStream = new FileOutputStream(PATH + fileName);
                 ObjectOutputStream objectStream = new ObjectOutputStream(fileStream)) {
             objectStream.writeObject(object);
-        } catch (IOException inputOutputException) {
-            System.err.printf("Exception Occurred while Serializing {}. Message is ", "WHAT to Write here instead of T.class", inputOutputException.getMessage());
-
+        } catch (IOException ioException) {
+            System.err.printf("Exception Occurred while Serializing. ", ioException.getMessage());
             return false;
         }
 
@@ -24,11 +25,11 @@ public class Serializer<T> {
     public T deSerialize(String fileName) {
 
         T object = null;
-        try (FileInputStream fileStream = new FileInputStream(fileName);
+        try (FileInputStream fileStream = new FileInputStream(PATH + fileName);
                 ObjectInputStream objectStream = new ObjectInputStream(fileStream)) {
             object = (T) objectStream.readObject();
-        } catch (IOException | ClassNotFoundException inputOutputException) {
-            System.err.printf("Exception Occurred while Serializing {}. Message is ", "WHAT to Write here instead of T.class", inputOutputException.getMessage());
+        } catch (IOException | ClassNotFoundException ioException) {
+            System.err.printf("Exception Occurred while Serializing. {0} ", ioException.getMessage());
         }
 
         return object;

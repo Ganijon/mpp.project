@@ -1,17 +1,24 @@
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.stage.Stage;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+public class AddCopyController {
 
-public class AddCopyController implements Initializable {
+    @FXML
+    private void handleSubmitAction(ActionEvent e) {
+        // todo:  logic
+        Views.showHome(stage, this);
+    }
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+    @FXML
+    private void handleCancelAction(ActionEvent e) {
+        Views.showHome(stage, this);
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    private Stage stage;
 }

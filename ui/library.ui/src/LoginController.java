@@ -1,18 +1,11 @@
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class LoginController implements Initializable {
+public class LoginController {
 
     @FXML
     private TextField tfUserName;
@@ -24,34 +17,14 @@ public class LoginController implements Initializable {
     private Label lblError;
 
     @FXML
-    private void handleButtonAction(ActionEvent event) {
+    private void handleLoginAction(ActionEvent event) {
 
-        UserAccount user = UserAccounts.GetUserAccount(tfUserName.getText(), tfPassword.getText());
-
-        if (user == null) {
+        if (UserContext.Login(tfUserName.getText(), tfPassword.getText()) == false) {
             lblError.setText("Incorrect User Name or Password");
             return;
         } else {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeScreen.fxml"));
-                Parent root = (Parent) loader.load();
-                HomeController controller = loader.getController();
-                controller.setStage(stage);
-                controller.setUserAccount(user);
-
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-
-            } catch (IOException ex) {
-                // Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+           Views.showHome(stage, this);
         }
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        lblError.setText("");
     }
 
     public void setStage(Stage stage) {

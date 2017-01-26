@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MemberDao implements Dao<Member> {
@@ -19,10 +20,20 @@ public class MemberDao implements Dao<Member> {
 
     @Override
     public boolean add(Member newMember) {
-       List<Member> allMembers = read();
-       allMembers.add(newMember);
-       return write(allMembers);
+        List<Member> list;
+        
+        // check data file
+        list = read();
+        if (list == null) {
+            // create empty data file
+            write(new ArrayList<>());
+            list = read();
+        }
+        
+        newMember.setMemberID(list.size() + 1);
+        list.add(newMember);
+        
+        return write(list);
     }
 
 }
-

@@ -15,12 +15,26 @@ public class BookCopy implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(" BookCopyId:");
-        sb.append(bookCopyId);
-
+        sb.append(getBookCopyId());
         sb.append(" Available:");
         sb.append(isAvailable ? "yes" : "no");
-
         return sb.toString();
+    }
+
+    public int getBookCopyId() {
+        return bookCopyId;
+    }
+
+    public void setBookCopyId(int bookCopyId) {
+        this.bookCopyId = bookCopyId;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
     }
 
 }
