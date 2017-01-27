@@ -42,7 +42,7 @@ public class AddCopyController {
     @FXML
     private void handleAddOneAction(ActionEvent e) {
         if (model != null) {
-            model.addBookCopy(new BookCopy());
+            model.addBookCopy();
             tfNoOfCopies.setText(Integer.toString(model.getBookCopies().size()));
         }
     }

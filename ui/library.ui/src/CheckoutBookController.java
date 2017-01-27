@@ -45,14 +45,14 @@ public class CheckoutBookController {
         }
     }
 
-    public boolean checkoutFirstAvailableCopy() {
+    public BookCopy checkoutAvailableCopy() {
         for (BookCopy copy : model.getBookCopies()) {
             if (copy.isAvailable()) {
                 copy.setAvailable(false);
-                return true;
+                return copy;
             }
         }
-        return false;
+        return null;
     }
 
     private List<BookCopy> getAvailableCopies() {
@@ -81,12 +81,15 @@ public class CheckoutBookController {
         }
 
         CheckoutRecordDao checkoutDao = new CheckoutRecordDao();
+
         CheckoutRecord record = checkoutDao.find(memberId);
 
+        BookCopy checkoutCopy = checkoutAvailableCopy();
+
         LocalDate dueDate = LocalDate.now().plusDays(-1);//model.getIssueLength());
-        BookCopy availableCopy = availableCopies.get(0);
+
         CheckoutEntry entry = new CheckoutEntry(LocalDate.now(), dueDate,
-                model.getISBN(), availableCopy.getBookCopyId(), memberId);
+                model.getISBN(), checkoutCopy.getBookCopyId(), memberId);
 
         boolean ok;
         if (record == null) {
@@ -99,8 +102,9 @@ public class CheckoutBookController {
             ok = checkoutDao.update(record);
         }
 
-        ok = ok && checkoutFirstAvailableCopy()
-                && new BookDao().update(model);
+        if (ok) 
+            ok = new BookDao().update(model);
+        
 
         if (!ok) {
             Views.showErrorAlert("Error while checkout book");

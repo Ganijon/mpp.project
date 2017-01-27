@@ -7,10 +7,10 @@ public final class CheckoutEntry implements Serializable {
     private final LocalDate checkoutDate;
     private final LocalDate dueDate;
     private final String bookISBN;
-    private final int bookCopyId;
+    private final String bookCopyId;
     private final String memberId;
 
-    public CheckoutEntry(LocalDate checkoutDate, LocalDate dueDate, String ISBN, int bookCopyId, String memberId) {
+    public CheckoutEntry(LocalDate checkoutDate, LocalDate dueDate, String ISBN, String bookCopyId, String memberId) {
         this.checkoutDate = checkoutDate;
         this.dueDate = dueDate;
         this.bookISBN = ISBN;
@@ -30,7 +30,7 @@ public final class CheckoutEntry implements Serializable {
         return bookISBN;
     }
 
-    public int getBookCopyId() {
+    public String getBookCopyId() {
         return bookCopyId;
     }
 

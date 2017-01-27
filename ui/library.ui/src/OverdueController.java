@@ -67,9 +67,9 @@ public class OverdueController {
         Views.showWelcome(stage, this);
     }
 
-    private BookCopy findBookCopy(int bookCopyId) {
+    private BookCopy findBookCopy(String bookCopyId) {
         for (BookCopy copy : model.getBookCopies()) {
-            if (copy.getBookCopyId() == bookCopyId) {
+            if (copy.getBookCopyId().equals(bookCopyId)) {
                 return copy;
             }
         }
@@ -86,8 +86,9 @@ public class OverdueController {
                 if (entry.getBookISBN().equals(model.getISBN())) {
                     if (entry.getDueDate().isBefore(LocalDate.now())) {
                         BookCopy copy = findBookCopy(entry.getBookCopyId());
-                        list.add(new OverdueBook(model.getISBN(),
-                                Integer.toString(entry.getBookCopyId()),
+                        list.add(new OverdueBook(
+                                model.getISBN(),
+                                entry.getBookCopyId(),
                                 entry.getMemberId(),
                                 copy.isAvailable() ? "Yes" : "No",
                                 entry.getDueDate().toString()));
