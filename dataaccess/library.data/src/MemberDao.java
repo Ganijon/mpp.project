@@ -4,9 +4,13 @@ import java.util.List;
 
 public class MemberDao implements Dao<Member> {
 
-    public final static String FILENAME = "members.ser";
+    private final static String FILENAME = "members.ser";
 
-    Serializer<List<Member>> serializer = new Serializer<>();
+    private final Serializer<List<Member>> serializer;
+
+    public MemberDao() {
+        this.serializer = new Serializer<>();
+    }
 
     @Override
     public List<Member> read() {
@@ -26,20 +30,31 @@ public class MemberDao implements Dao<Member> {
     @Override
     public boolean add(Member newMember) {
         List<Member> list = read();
-        newMember.setMemberID(list.size() + 1);
+        newMember.setMemberId(Integer.toString(list.size() + 1));
         list.add(newMember);
         return write(list);
     }
 
     //@Override
-    public Member find(int memberId) {
+    public Member find(String memberId) {
         List<Member> list = read();
         for (Member member : list) {
-            if (member.getMemberID() == memberId) {
+            if (member.getMemberId().equals(memberId)) {
                 return member;
             }
         }
         return null;
     }
 
+    @Override
+    public boolean update(Member data) {
+        List<Member> list = read();
+        for (Member member : list) {
+            if (member.getMemberId() == data.getMemberId()) {
+                member = data;
+            }
+            return write(list);
+        }
+        return false;
+    }
 }

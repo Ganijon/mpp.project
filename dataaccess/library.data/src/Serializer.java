@@ -15,7 +15,7 @@ public class Serializer<T> {
                 ObjectOutputStream objectStream = new ObjectOutputStream(fileStream)) {
             objectStream.writeObject(object);
         } catch (IOException ioException) {
-            System.err.printf("Exception Occurred while Serializing. ", ioException.getMessage());
+            System.err.print("Error while Serializing. " + ioException.getMessage());
             return false;
         }
 
@@ -29,7 +29,7 @@ public class Serializer<T> {
                 ObjectInputStream objectStream = new ObjectInputStream(fileStream)) {
             object = (T) objectStream.readObject();
         } catch (IOException | ClassNotFoundException ioException) {
-            System.err.printf("Exception Occurred while Serializing. {0} ", ioException.getMessage());
+            System.err.print("Error while Serializing. " + ioException.getMessage());
         }
 
         return object;

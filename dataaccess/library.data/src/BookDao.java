@@ -2,11 +2,15 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookDao implements Dao<Book> {
+public final class BookDao implements Dao<Book> {
 
-    public final static String FILENAME = "books.ser";
+    private final static String FILENAME = "books.ser";
 
-    private Serializer<List<Book>> serializer = new Serializer<>();
+    private final Serializer<List<Book>> serializer;
+
+    public BookDao() {
+        this.serializer = new Serializer<>();
+    }
 
     @Override
     public List<Book> read() {
@@ -41,24 +45,14 @@ public class BookDao implements Dao<Book> {
         return null;
     }
 
+    @Override
     public boolean update(Book data) {
         List<Book> list = read();
         for (Book book : list) {
             if (book.getISBN().equals(data.getISBN())) {
-                
                 book.setTitle(data.getTitle());
-                
-                int delta = data.getNoOfCopies() - book.getNoOfCopies();
-                if (delta > 0) {
-                    for (int i = 0; i < delta; i++) {
-                        book.addBookCopy(new BookCopy());
-                    }
-                }
+                book.setBookCopies(data.getBookCopies());
 
-                delta = book.getNoOfAvailableCopies() - data.getNoOfAvailableCopies();
-                if (delta > 0) {
-                    book.decrementNoOfAvailableCopies();
-                }
                 return write(list);
             }
         }
