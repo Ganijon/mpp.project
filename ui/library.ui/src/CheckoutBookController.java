@@ -74,9 +74,8 @@ public class CheckoutBookController {
             return;
         }
 
-        int memberId = Integer.parseInt(tfMemberId.getText());
-        Member foundMember = new MemberDao().find(memberId);
-        if (foundMember == null) {
+        String memberId = tfMemberId.getText();
+        if (null == new MemberDao().find(memberId)) {
             Views.showErrorAlert("Member not found");
             return;
         }

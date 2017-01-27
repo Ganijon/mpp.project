@@ -17,8 +17,7 @@ public class PrintCheckoutController {
 
     @FXML
     private void handleFindRecords(ActionEvent e) {
-
-        int memberId = Integer.parseInt(tfMemberId.getText());
+        String memberId = tfMemberId.getText();
         model = new CheckoutRecordDao().find(memberId);
         if (model == null) {
             taRecords.setText("No records were found. Try another Member ID.");

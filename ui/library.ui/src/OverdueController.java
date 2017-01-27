@@ -88,7 +88,7 @@ public class OverdueController {
                         BookCopy copy = findBookCopy(entry.getBookCopyId());
                         list.add(new OverdueBook(model.getISBN(),
                                 Integer.toString(entry.getBookCopyId()),
-                                Integer.toString(entry.getMemberId()),
+                                entry.getMemberId(),
                                 copy.isAvailable() ? "Yes" : "No",
                                 entry.getDueDate().toString()));
                     }
