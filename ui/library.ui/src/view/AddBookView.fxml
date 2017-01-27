@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddBookController">
+   <children>
+      <Button layoutX="261.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleSubmitAction" prefHeight="25.0" prefWidth="114.0" text="Submit" />
+      <Button layoutX="132.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleCancelAction" prefHeight="25.0" prefWidth="114.0" text="Cancel" />
+      <Label layoutX="148.0" layoutY="30.0" text="Add Book">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfTitle" layoutX="144.0" layoutY="132.0" prefWidth="220.0" />
+      <TextField fx:id="tfISBN" layoutX="144.0" layoutY="95.0" prefWidth="220.0" />
+      <Label layoutX="59.0" layoutY="246.0" prefHeight="17.0" prefWidth="72.0" text="No. of copies" />
+      <Label layoutX="59.0" layoutY="209.0" prefHeight="17.0" prefWidth="85.0" text="Max. usage" />
+      <Label layoutX="59.0" layoutY="173.0" prefHeight="17.0" prefWidth="72.0" text="Authors" />
+      <Label layoutX="59.0" layoutY="136.0" prefHeight="17.0" prefWidth="72.0" text="Title" />
+      <Label layoutX="59.0" layoutY="99.0" prefHeight="17.0" prefWidth="72.0" text="ISBN" />
+      <RadioButton fx:id="rb7days" layoutX="146.0" layoutY="210.0" mnemonicParsing="false" text="7 days">
+         <toggleGroup>
+            <ToggleGroup fx:id="maxUsage" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="rb21days" layoutX="215.0" layoutY="210.0" mnemonicParsing="false" selected="true" text="21 days" toggleGroup="$maxUsage" />
+      <Label fx:id="lNoOfCopies" layoutX="146.0" layoutY="246.0" text="1" />
+      <TextField fx:id="tfAuthors" layoutX="144.0" layoutY="169.0" prefWidth="220.0" />
+   </children>
+</AnchorPane>

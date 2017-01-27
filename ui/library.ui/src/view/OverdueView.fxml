@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OverdueController">
+   <children>
+      <Label alignment="CENTER" layoutX="86.0" layoutY="21.0" prefHeight="35.0" prefWidth="244.0" text="Check Overdue Book">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="80.0" text="Enter ISBN" />
+      <TextField fx:id="tfISBN" layoutX="96.0" layoutY="76.0" prefHeight="25.0" prefWidth="199.0" />
+      <Button layoutX="302.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleFindOverdueCopies" prefHeight="25.0" prefWidth="76.0" text="Check" />
+      <TableView fx:id="tableView" layoutX="21.0" layoutY="148.0" prefHeight="186.0" prefWidth="357.0">
+        <columns>
+            <TableColumn fx:id="tcISBN" prefWidth="66.0" text="ISBN" />
+          <TableColumn fx:id="tcBookCopyId" prefWidth="81.0" text="Book copy ID" />
+          <TableColumn fx:id="tcAvailable" prefWidth="57.0" text="Available" />
+            <TableColumn fx:id="tcDueDate" prefWidth="77.0" text="Due Date" />
+            <TableColumn fx:id="tcMemberId" prefWidth="74.0" text="Member ID" />
+        </columns>
+      </TableView>
+      <Label layoutX="53.0" layoutY="110.0" text="Title" />
+      <TextField fx:id="tfTitle" editable="false" layoutX="96.0" layoutY="106.0" prefHeight="25.0" prefWidth="199.0" />
+      <Button layoutX="132.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleCancelAction" prefHeight="25.0" prefWidth="114.0" text="Cancel" />
+      <Button layoutX="261.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleSubmitAction" prefHeight="25.0" prefWidth="114.0" text="Clear" />
+   </children>
+</AnchorPane>

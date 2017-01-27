@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PrintCheckoutController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="69.0" layoutY="14.0" prefHeight="35.0" prefWidth="274.0" text="Print Checkout Record">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="89.0" text="Enter Member ID" />
+      <TextField fx:id="tfMemberId" layoutX="132.0" layoutY="85.0" prefHeight="25.0" prefWidth="141.0" />
+      <Button layoutX="132.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleCancelAction" prefHeight="25.0" prefWidth="114.0" text="Cancel" />
+      <Button layoutX="261.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleSubmitAction" prefHeight="25.0" prefWidth="114.0" text="Print to Console" />
+      <Button layoutX="283.0" layoutY="85.0" mnemonicParsing="false" onAction="#handleFindRecords" prefHeight="25.0" prefWidth="91.0" text="Find Records" />
+      <TextArea fx:id="taRecords" layoutX="27.0" layoutY="119.0" prefHeight="204.0" prefWidth="348.0" wrapText="true" />
+   </children>
+</AnchorPane>
