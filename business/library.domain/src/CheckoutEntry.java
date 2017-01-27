@@ -2,19 +2,20 @@
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class CheckoutEntry implements Serializable {
+public final class CheckoutEntry implements Serializable {
 
     private final LocalDate checkoutDate;
     private final LocalDate dueDate;
+    private final String bookISBN;
     private final int bookCopyId;
-    private final int memberId;
+    private final String memberId;
 
-    public CheckoutEntry(LocalDate checkoutDate, LocalDate dueDate, int bookCopyId, int memberId) {
+    public CheckoutEntry(LocalDate checkoutDate, LocalDate dueDate, String ISBN, int bookCopyId, String memberId) {
         this.checkoutDate = checkoutDate;
         this.dueDate = dueDate;
+        this.bookISBN = ISBN;
         this.bookCopyId = bookCopyId;
         this.memberId = memberId;
-
     }
 
     public LocalDate getCheckoutDate() {
@@ -25,18 +26,27 @@ public class CheckoutEntry implements Serializable {
         return dueDate;
     }
 
+    public String getBookISBN() {
+        return bookISBN;
+    }
+
     public int getBookCopyId() {
         return bookCopyId;
     }
-    public int getMemberId() {
+
+    public String getMemberId() {
         return memberId;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("ISBN:");
+        sb.append(bookISBN);
         sb.append(" BookCopyID:");
         sb.append(bookCopyId);
+        sb.append(" MemberID:");
+        sb.append(memberId);
         sb.append(" CheckoutDate:");
         sb.append(checkoutDate);
         sb.append(" DueDate:");

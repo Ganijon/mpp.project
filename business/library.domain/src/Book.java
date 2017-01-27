@@ -3,7 +3,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book implements Serializable {
+public final class Book implements Serializable {
 
     private String title;
     private String ISBN;
@@ -15,11 +15,9 @@ public class Book implements Serializable {
         this.title = title;
         this.ISBN = ISBN;
         this.issueLength = issueLength;
-
-        copies = new ArrayList<>();
+        this.authors = new ArrayList<>();
+        this.copies = new ArrayList<>();
         addBookCopy(new BookCopy());
-
-        authors = new ArrayList<>();
     }
 
     public String getTitle() {
@@ -46,43 +44,24 @@ public class Book implements Serializable {
         this.issueLength = issueLength;
     }
 
-    public int getNoOfCopies() {
-        return copies.size();
+    public List<BookCopy> getBookCopies() {
+        return copies;
     }
 
-    public int getNoOfAvailableCopies() {
-        int count = 0;
-        for (BookCopy bc : copies) {
-            if (bc.isAvailable()) {
-                count++;
-            }
-        }
-        return count;
+    public void setBookCopies(List<BookCopy> copies) {
+        this.copies = copies;
     }
-
-    public BookCopy getAvailableCopy() {
-        int index = getNoOfCopies() - getNoOfAvailableCopies();
-        if (index > 0) 
-            return copies.get(index);
-        
-        return null;
-    }
-
-    public int decrementNoOfAvailableCopies() {
-        int count = getNoOfAvailableCopies();
-        if (count > 0) {
-            for (BookCopy bc : copies) {
-                if (bc.isAvailable()) {
-                    bc.setAvailable(false);
-                    return --count;
-                }
-            }
-        }
-        return count;
-    }
-
     public String getAuthors() {
         return authors.get(0).getFirstName();
+    }
+
+    public void addBookCopy(BookCopy b) {
+        b.setBookCopyId(copies.size() + 1);
+        copies.add(b);
+    }
+
+    public void addAuthor(Author a) {
+        authors.add(a);
     }
 
     @Override
@@ -101,12 +80,4 @@ public class Book implements Serializable {
         return sb.toString();
     }
 
-    public void addBookCopy(BookCopy b) {
-        b.setBookCopyId(copies.size() + 1);
-        copies.add(b);
-    }
-
-    public void addAuthor(Author a) {
-        authors.add(a);
-    }
 }
