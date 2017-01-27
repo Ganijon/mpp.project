@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class HomeController {
+public class WelcomeController {
 
     @FXML
     private Label lTitle;
@@ -17,23 +17,29 @@ public class HomeController {
     private Pane pAdminPane;
 
     @FXML
+    private void handleLogout(ActionEvent event) {
+        UserContext.Logout();
+        Views.showLogin(stage, this);
+    }
+
+    @FXML
     private void handleAddMember(ActionEvent event) {
         Views.showAddMember(stage, this);
     }
 
     @FXML
     private void handleAddBook(ActionEvent event) {
-       Views.showAddBook(stage, this);
+        Views.showAddBook(stage, this);
     }
 
     @FXML
     private void handleAddBookCopy(ActionEvent event) {
-       Views.showAddBookCopy(stage, this);
+        Views.showAddBookCopy(stage, this);
     }
 
     @FXML
     private void handleCheckoutBook(ActionEvent event) {
-       Views.showCheckoutBook(stage, this);
+        Views.showCheckoutBook(stage, this);
     }
 
     @FXML
@@ -50,16 +56,16 @@ public class HomeController {
         switch (UserContext.getAccess()) {
             case Admin:
                 pLibPane.setVisible(false);
-                pAdminPane.setLayoutX(110);
+                pAdminPane.setLayoutX(114);
                 lTitle.setText("Welcome, Administrator");
                 break;
             case Librarian:
                 pAdminPane.setVisible(false);
-                pLibPane.setLayoutX(110);
+                pLibPane.setLayoutX(114);
                 lTitle.setText("Welcome, Librarian");
                 break;
             case Both:
-                lTitle.setText("Welcome, Almighty");
+                lTitle.setText("Welcome");
                 break;
         }
     }

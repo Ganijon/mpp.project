@@ -10,11 +10,11 @@ import javafx.stage.Stage;
 
 public class Views {
 
-    public static void showHome(Stage stage, Object origin) {
+    public static void showWelcome(Stage stage, Object origin) {
         try {
-            FXMLLoader loader = new FXMLLoader(origin.getClass().getResource("HomeView.fxml"));
+            FXMLLoader loader = new FXMLLoader(origin.getClass().getResource("WelcomeView.fxml"));
             Parent root = (Parent) loader.load();
-            HomeController controller = loader.getController();
+            WelcomeController controller = loader.getController();
             controller.setStage(stage);
             controller.adjustLayout();
             Scene scene = new Scene(root);
@@ -117,6 +117,7 @@ public class Views {
             Parent root = (Parent) loader.load();
             OverdueController controller = loader.getController();
             controller.setStage(stage);
+            controller.adjustLayout();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

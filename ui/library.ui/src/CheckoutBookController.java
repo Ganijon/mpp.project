@@ -1,5 +1,7 @@
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -39,21 +41,41 @@ public class CheckoutBookController {
         } else {
             tfTitle.setText(model.getTitle());
             tfAuthors.setText(model.getAuthors());
-            tfNoOfCopies.setText(Integer.toString(model.getNoOfAvailableCopies()));
+            tfNoOfCopies.setText(Integer.toString(getAvailableCopies().size()));
         }
+    }
+
+    public boolean checkoutFirstAvailableCopy() {
+        for (BookCopy copy : model.getBookCopies()) {
+            if (copy.isAvailable()) {
+                copy.setAvailable(false);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private List<BookCopy> getAvailableCopies() {
+        List<BookCopy> list = new ArrayList<>();
+        for (BookCopy copy : model.getBookCopies()) {
+            if (copy.isAvailable()) {
+                list.add(copy);
+            }
+        }
+        return list;
     }
 
     @FXML
     private void handleSubmitAction(ActionEvent e) {
 
-        if (model.getNoOfAvailableCopies() == 0) {
+        List<BookCopy> availableCopies = getAvailableCopies();
+        if (availableCopies.size() < 1) {
             Views.showErrorAlert("No copies available");
             return;
         }
 
         int memberId = Integer.parseInt(tfMemberId.getText());
         Member foundMember = new MemberDao().find(memberId);
-
         if (foundMember == null) {
             Views.showErrorAlert("Member not found");
             return;
@@ -62,35 +84,36 @@ public class CheckoutBookController {
         CheckoutRecordDao checkoutDao = new CheckoutRecordDao();
         CheckoutRecord record = checkoutDao.find(memberId);
 
-        LocalDate dueDate = LocalDate.now().plusDays(model.getIssueLength());
-        int copyId = model.getAvailableCopy().getBookCopyId();
-        CheckoutEntry entry = new CheckoutEntry(LocalDate.now(), dueDate, copyId, memberId);
+        LocalDate dueDate = LocalDate.now().plusDays(-1);//model.getIssueLength());
+        BookCopy availableCopy = availableCopies.get(0);
+        CheckoutEntry entry = new CheckoutEntry(LocalDate.now(), dueDate,
+                model.getISBN(), availableCopy.getBookCopyId(), memberId);
 
-        boolean updated;
+        boolean ok;
         if (record == null) {
             record = new CheckoutRecord(memberId);
             record.getCheckouts().add(entry);
-            updated = checkoutDao.add(record);
+            ok = checkoutDao.add(record);
 
         } else {
             record.getCheckouts().add(entry);
-            updated = checkoutDao.update(record);
+            ok = checkoutDao.update(record);
         }
 
-        model.decrementNoOfAvailableCopies();
-        updated = new BookDao().update(model) && updated;
+        ok = ok && checkoutFirstAvailableCopy()
+                && new BookDao().update(model);
 
-        if (!updated) {
+        if (!ok) {
             Views.showErrorAlert("Error while checkout book");
         } else {
             Views.showSuccessAlert("Checkout complete");
-            Views.showHome(stage, this);
+            Views.showWelcome(stage, this);
         }
     }
 
     @FXML
     private void handleCancelAction(ActionEvent e) {
-        Views.showHome(stage, this);
+        Views.showWelcome(stage, this);
     }
 
     public void setStage(Stage stage) {

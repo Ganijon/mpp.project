@@ -28,12 +28,16 @@ public class UserContext {
     public static String getUserName() {
         return IsLoggedIn() ? currentUser.getUserName() : null;
     }
-    
+
     public static Access getAccess() {
         return IsLoggedIn() ? currentUser.getAccess() : null;
     }
 
     public static boolean IsLoggedIn() {
         return currentUser != null;
+    }
+
+    public static boolean Logout() {
+        return currentUser == null;
     }
 }

@@ -35,7 +35,7 @@ public class AddCopyController {
         } else {
             tfTitle.setText(model.getTitle());
             tfAuthors.setText(model.getAuthors());
-            tfNoOfCopies.setText(Integer.toString(model.getNoOfCopies()));
+            tfNoOfCopies.setText(Integer.toString(model.getBookCopies().size()));
         }
     }
 
@@ -43,26 +43,26 @@ public class AddCopyController {
     private void handleAddOneAction(ActionEvent e) {
         if (model != null) {
             model.addBookCopy(new BookCopy());
-            tfNoOfCopies.setText(Integer.toString(model.getNoOfCopies()));
+            tfNoOfCopies.setText(Integer.toString(model.getBookCopies().size()));
         }
     }
 
     @FXML
     private void handleSubmitAction(ActionEvent e) {
         if (model != null) {
-
-            if (new BookDao().update(model)) {
-                Views.showSuccessAlert("Data updated successfully");
+            boolean ok = new BookDao().update(model);
+            if (!ok) {
+                Views.showErrorAlert("Error while saving data");
             } else {
-                Views.showSuccessAlert("Error while saving data");
+                Views.showSuccessAlert("Data updated successfully");
+                Views.showWelcome(stage, this);
             }
         }
-        Views.showHome(stage, this);
     }
 
     @FXML
     private void handleCancelAction(ActionEvent e) {
-        Views.showHome(stage, this);
+        Views.showWelcome(stage, this);
     }
 
     public void setStage(Stage stage) {

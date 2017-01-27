@@ -23,7 +23,7 @@ public class LoginController {
             lblError.setText("Incorrect User Name or Password");
             return;
         } else {
-           Views.showHome(stage, this);
+           Views.showWelcome(stage, this);
         }
     }
 

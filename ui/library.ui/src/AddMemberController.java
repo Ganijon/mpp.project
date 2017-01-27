@@ -43,12 +43,12 @@ public class AddMemberController {
             Views.showErrorAlert("Error while saving data");
         }
 
-        Views.showHome(stage, this);
+        Views.showWelcome(stage, this);
     }
 
     @FXML
     public void handleCancelAction(ActionEvent event) {
-        Views.showHome(stage, this);
+        Views.showWelcome(stage, this);
     }
 
     public void setStage(Stage stage) {
