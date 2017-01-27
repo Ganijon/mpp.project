@@ -38,7 +38,7 @@ public class MemberDao implements Dao<Member> {
         return write(list);
     }
 
-    //@Override
+    @Override
     public Member find(String memberId) {
         List<Member> list = read();
         for (Member member : list) {

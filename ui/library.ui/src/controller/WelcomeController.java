@@ -43,7 +43,7 @@ public class WelcomeController {
 
     @FXML
     private void handleCheckoutBook(ActionEvent event) {
-        Views.showCheckoutBook(stage);
+        Views.showCheckout(stage);
     }
 
     @FXML

@@ -1,13 +1,14 @@
 package controller;
 
 import dao.MemberDao;
-import dao.CheckoutRecordDao;
+import dao.CheckoutDao;
 import dao.BookDao;
 import model.Book;
-import model.CheckoutRecord;
+import model.Checkout;
 import model.BookCopy;
 import model.CheckoutEntry;
 import app.Views;
+import dao.Dao;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class CheckoutBookController {
+public class CheckoutController {
 
     @FXML
     private TextField tfISBN;
@@ -89,20 +90,20 @@ public class CheckoutBookController {
             return;
         }
 
-        CheckoutRecordDao checkoutDao = new CheckoutRecordDao();
+        Dao<Checkout> checkoutDao = new CheckoutDao();
 
-        CheckoutRecord record = checkoutDao.find(memberId);
-
+        LocalDate dueDate = LocalDate.now().plusDays(-model.getIssueLength());
+        
         BookCopy checkoutCopy = checkoutAvailableCopy();
-
-        LocalDate dueDate = LocalDate.now().plusDays(-1);//model.getIssueLength());
 
         CheckoutEntry entry = new CheckoutEntry(LocalDate.now(), dueDate,
                 model.getISBN(), checkoutCopy.getBookCopyId(), memberId);
 
+        Checkout record = checkoutDao.find(memberId);
+
         boolean ok;
         if (record == null) {
-            record = new CheckoutRecord(memberId);
+            record = new Checkout(memberId);
             record.getCheckouts().add(entry);
             ok = checkoutDao.add(record);
 
@@ -116,7 +117,7 @@ public class CheckoutBookController {
         }
 
         if (!ok) {
-            Views.showErrorAlert("Error while checkout book");
+            Views.showErrorAlert("Error while checkout");
         } else {
             Views.showSuccessAlert("Checkout complete");
             Views.showWelcome(stage);

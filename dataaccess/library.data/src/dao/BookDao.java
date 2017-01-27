@@ -37,7 +37,7 @@ public final class BookDao implements Dao<Book> {
         return write(list);
     }
 
-    //@Override
+    @Override
     public Book find(String ISBN) {
         List<Book> list = read();
         for (Book book : list) {

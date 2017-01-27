@@ -1,8 +1,8 @@
 package controller;
 
 
-import dao.CheckoutRecordDao;
-import model.CheckoutRecord;
+import dao.CheckoutDao;
+import model.Checkout;
 import app.Views;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,12 +18,12 @@ public class PrintCheckoutController {
     @FXML
     private TextArea taRecords;
 
-    private CheckoutRecord model;
+    private Checkout model;
 
     @FXML
     private void handleFindRecords(ActionEvent e) {
         String memberId = tfMemberId.getText();
-        model = new CheckoutRecordDao().find(memberId);
+        model = new CheckoutDao().find(memberId);
         if (model == null) {
             taRecords.setText("No records were found. Try another Member ID.");
         } else {

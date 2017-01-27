@@ -1,6 +1,6 @@
 package app;
 
-import controller.CheckoutBookController;
+import controller.CheckoutController;
 import controller.AddCopyController;
 import controller.WelcomeController;
 import controller.OverdueController;
@@ -96,11 +96,11 @@ public class Views {
         }
     }
 
-    public static void showCheckoutBook(Stage stage) {
+    public static void showCheckout(Stage stage) {
         try {
-            FXMLLoader loader = new FXMLLoader(Views.class.getResource(PATH + "CheckoutBookView.fxml"));
+            FXMLLoader loader = new FXMLLoader(Views.class.getResource(PATH + "CheckoutView.fxml"));
             Parent root = (Parent) loader.load();
-            CheckoutBookController controller = loader.getController();
+            CheckoutController controller = loader.getController();
             controller.setStage(stage);
             Scene scene = new Scene(root);
             stage.setScene(scene);

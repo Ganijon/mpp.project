@@ -2,10 +2,10 @@ package controller;
 
 
 import dao.BookDao;
-import dao.CheckoutRecordDao;
+import dao.CheckoutDao;
 import model.Book;
 import model.CheckoutEntry;
-import model.CheckoutRecord;
+import model.Checkout;
 import model.BookCopy;
 import app.Views;
 import java.time.LocalDate;
@@ -89,8 +89,8 @@ public class OverdueController {
         ObservableList<OverdueBook> list = FXCollections.observableArrayList();
         // loop through checkoutrecords to find entries
         // with entered ISBN and DueDate before Today.
-        List<CheckoutRecord> allRecords = new CheckoutRecordDao().read();
-        for (CheckoutRecord record : allRecords) {
+        List<Checkout> allRecords = new CheckoutDao().read();
+        for (Checkout record : allRecords) {
             for (CheckoutEntry entry : record.getCheckouts()) {
                 if (entry.getBookISBN().equals(model.getISBN())) {
                     if (entry.getDueDate().isBefore(LocalDate.now())) {
