@@ -2,7 +2,7 @@ package controller;
 
 
 import dao.CheckoutRecordDao;
-import entity.CheckoutRecord;
+import model.CheckoutRecord;
 import app.Views;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -3,10 +3,10 @@ package controller;
 
 import dao.BookDao;
 import dao.CheckoutRecordDao;
-import entity.Book;
-import entity.CheckoutEntry;
-import entity.CheckoutRecord;
-import entity.BookCopy;
+import model.Book;
+import model.CheckoutEntry;
+import model.CheckoutRecord;
+import model.BookCopy;
 import app.Views;
 import java.time.LocalDate;
 import java.util.List;

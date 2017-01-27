@@ -1,5 +1,4 @@
-package entity;
-
+package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -53,6 +52,7 @@ public final class Book implements Serializable {
     public void setBookCopies(List<BookCopy> copies) {
         this.copies = copies;
     }
+
     public String getAuthors() {
         return authors.get(0).getFirstName();
     }

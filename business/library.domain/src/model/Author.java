@@ -1,8 +1,6 @@
-package entity;
-
+package model;
 
 import java.io.Serializable;
-
 
 public class Author extends Person implements Serializable {
 

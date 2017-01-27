@@ -1,8 +1,8 @@
 package controller;
 
 import dao.MemberDao;
-import entity.Member;
-import entity.Address;
+import model.Member;
+import model.Address;
 import app.Views;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

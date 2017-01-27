@@ -1,5 +1,4 @@
-package entity;
-
+package model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -21,7 +20,8 @@ public class FineEntry implements Serializable {
     public LocalDate getLateReturn() {
         return lateReturn;
     }
- @Override
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(" PaidDate:");

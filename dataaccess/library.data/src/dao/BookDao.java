@@ -1,7 +1,7 @@
 package dao;
 
 import io.Serializer;
-import entity.Book;
+import model.Book;
 import java.util.ArrayList;
 import java.util.List;
 

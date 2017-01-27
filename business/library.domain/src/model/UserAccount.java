@@ -1,6 +1,4 @@
-package entity;
-
-
+package model;
 
 public class UserAccount {
 
@@ -13,15 +11,15 @@ public class UserAccount {
         this.password = password;
         this.access = access;
     }
-    
+
     public String getUserName() {
         return userName;
     }
-    
+
     public String getPassword() {
         return password;
     }
-    
+
     public Access getAccess() {
         return access;
     }

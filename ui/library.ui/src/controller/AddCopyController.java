@@ -1,7 +1,7 @@
 package controller;
 
 import dao.BookDao;
-import entity.Book;
+import model.Book;
 import app.Views;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

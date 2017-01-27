@@ -1,8 +1,8 @@
 package dao;
 
 import io.Serializer;
-import entity.CheckoutEntry;
-import entity.CheckoutRecord;
+import model.CheckoutEntry;
+import model.CheckoutRecord;
 import java.util.ArrayList;
 import java.util.List;
 

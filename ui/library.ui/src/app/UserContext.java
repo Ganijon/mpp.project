@@ -1,7 +1,7 @@
 package app;
 
-import entity.Access;
-import entity.UserAccount;
+import model.Access;
+import model.UserAccount;
 import java.util.HashMap;
 
 public class UserContext {
