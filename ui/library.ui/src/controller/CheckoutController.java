@@ -15,7 +15,6 @@ import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class CheckoutController {
 
@@ -120,18 +119,12 @@ public class CheckoutController {
             Views.showErrorAlert("Error while checkout");
         } else {
             Views.showSuccessAlert("Checkout complete");
-            Views.showWelcome(stage);
+            Views.showWelcome();
         }
     }
 
     @FXML
     private void handleCancelAction(ActionEvent e) {
-        Views.showWelcome(stage);
+        Views.showWelcome();
     }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
-    private Stage stage;
 }

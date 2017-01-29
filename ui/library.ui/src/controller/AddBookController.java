@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class AddBookController {
 
@@ -34,7 +33,7 @@ public class AddBookController {
 
     @FXML
     public void handleCancelAction(ActionEvent event) {
-        Views.showWelcome(stage);
+        Views.showWelcome();
     }
 
     @FXML
@@ -49,12 +48,6 @@ public class AddBookController {
         } else {
             Views.showErrorAlert("Error while saving data");
         }
-        Views.showWelcome(stage);
+        Views.showWelcome();
     }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
-    private Stage stage;
 }

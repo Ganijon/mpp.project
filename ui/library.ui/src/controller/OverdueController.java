@@ -1,6 +1,5 @@
 package controller;
 
-
 import dao.BookDao;
 import dao.CheckoutDao;
 import model.Book;
@@ -19,7 +18,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 
 public class OverdueController {
 
@@ -73,7 +71,7 @@ public class OverdueController {
 
     @FXML
     private void handleCancelAction(ActionEvent e) {
-        Views.showWelcome(stage);
+        Views.showWelcome();
     }
 
     private BookCopy findBookCopy(String bookCopyId) {
@@ -115,12 +113,6 @@ public class OverdueController {
         tcDueDate.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
         tcMemberId.setCellValueFactory(new PropertyValueFactory<>("memberId"));
     }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
-    private Stage stage;
 
     public class OverdueBook {
 

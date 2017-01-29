@@ -2,12 +2,11 @@ package controller;
 
 
 import app.Views;
-import app.UserContext;
+import app.UserAccounts;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 public class WelcomeController {
 
@@ -22,42 +21,42 @@ public class WelcomeController {
 
     @FXML
     private void handleLogout(ActionEvent event) {
-        UserContext.Logout();
-        Views.showLogin(stage);
+        UserAccounts.Logout();
+        Views.showLogin();
     }
 
     @FXML
     private void handleAddMember(ActionEvent event) {
-        Views.showAddMember(stage);
+        Views.showAddMember();
     }
 
     @FXML
     private void handleAddBook(ActionEvent event) {
-        Views.showAddBook(stage);
+        Views.showAddBook();
     }
 
     @FXML
     private void handleAddBookCopy(ActionEvent event) {
-        Views.showAddBookCopy(stage);
+        Views.showAddBookCopy();
     }
 
     @FXML
     private void handleCheckoutBook(ActionEvent event) {
-        Views.showCheckout(stage);
+        Views.showCheckout();
     }
 
     @FXML
     private void handlePrintCheckout(ActionEvent event) {
-        Views.showPrintCheckout(stage);
+        Views.showPrintCheckout();
     }
 
     @FXML
     private void handleOverdue(ActionEvent event) {
-        Views.showOverdue(stage);
+        Views.showOverdue();
     }
 
     public void adjustLayout() {
-        switch (UserContext.getAccess()) {
+        switch (UserAccounts.getAccess()) {
             case Admin:
                 pLibPane.setVisible(false);
                 pAdminPane.setLayoutX(114);
@@ -73,11 +72,4 @@ public class WelcomeController {
                 break;
         }
     }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
-    private Stage stage;
-
 }

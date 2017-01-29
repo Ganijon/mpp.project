@@ -2,12 +2,11 @@ package controller;
 
 
 import app.Views;
-import app.UserContext;
+import app.UserAccounts;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class LoginController {
 
@@ -23,16 +22,10 @@ public class LoginController {
     @FXML
     private void handleLoginAction(ActionEvent event) {
 
-        if (UserContext.Login(tfUserName.getText(), tfPassword.getText()) == false) {
+        if (UserAccounts.Login(tfUserName.getText(), tfPassword.getText()) == false) {
             lblError.setText("Incorrect User Name or Password");
-            return;
         } else {
-           Views.showWelcome(stage);
+           Views.showWelcome();
         }
     }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-    private Stage stage;
 }

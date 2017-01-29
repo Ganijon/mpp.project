@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class PrintCheckoutController {
 
@@ -38,18 +37,12 @@ public class PrintCheckoutController {
         } else {
             System.out.print("CHECKOUT HISTORY: " + model);
             Views.showSuccessAlert("Following was sent to Console: \nCHECKOUT HISTORY:" + model);
-            Views.showWelcome(stage);
+            Views.showWelcome();
         }
     }
 
     @FXML
     private void handleCancelAction(ActionEvent e) {
-        Views.showWelcome(stage);
+        Views.showWelcome();
     }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
-    private Stage stage;
 }

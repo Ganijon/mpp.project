@@ -9,7 +9,8 @@ public class LibraryApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.initStyle(StageStyle.UTILITY);
-        Views.showLogin(stage);
+        Views.setStage(stage);
+        Views.showLogin();
     }
 
     public static void main(String[] args) {

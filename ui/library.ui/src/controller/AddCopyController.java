@@ -6,7 +6,6 @@ import app.Views;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class AddCopyController {
 
@@ -59,19 +58,13 @@ public class AddCopyController {
                 Views.showErrorAlert("Error while saving data");
             } else {
                 Views.showSuccessAlert("Data updated successfully");
-                Views.showWelcome(stage);
+                Views.showWelcome();
             }
         }
     }
 
     @FXML
     private void handleCancelAction(ActionEvent e) {
-        Views.showWelcome(stage);
+        Views.showWelcome();
     }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
-    private Stage stage;
 }

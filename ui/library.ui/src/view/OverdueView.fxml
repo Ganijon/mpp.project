@@ -20,8 +20,8 @@
          </font>
       </Label>
       <Label layoutX="24.0" layoutY="80.0" text="Enter ISBN" />
-      <TextField fx:id="tfISBN" layoutX="96.0" layoutY="76.0" prefHeight="25.0" prefWidth="199.0" />
-      <Button layoutX="302.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleFindOverdueCopies" prefHeight="25.0" prefWidth="76.0" text="Check" />
+      <TextField fx:id="tfISBN" layoutX="96.0" layoutY="76.0" prefHeight="25.0" prefWidth="193.0" />
+      <Button layoutX="295.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleFindOverdueCopies" prefHeight="25.0" prefWidth="83.0" text="Check Book" />
       <TableView fx:id="tableView" layoutX="21.0" layoutY="148.0" prefHeight="186.0" prefWidth="357.0">
         <columns>
             <TableColumn fx:id="tcISBN" prefWidth="66.0" text="ISBN" />
@@ -32,7 +32,7 @@
         </columns>
       </TableView>
       <Label layoutX="53.0" layoutY="110.0" text="Title" />
-      <TextField fx:id="tfTitle" editable="false" layoutX="96.0" layoutY="106.0" prefHeight="25.0" prefWidth="199.0" />
+      <TextField fx:id="tfTitle" editable="false" layoutX="96.0" layoutY="106.0" prefHeight="25.0" prefWidth="282.0" />
       <Button layoutX="132.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleCancelAction" prefHeight="25.0" prefWidth="114.0" text="Cancel" />
       <Button layoutX="261.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleSubmitAction" prefHeight="25.0" prefWidth="114.0" text="Clear" />
    </children>
